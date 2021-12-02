@@ -1,24 +1,29 @@
 import React from 'react';
 // import './App.css';
 import Auth from '../Auth/Auth';
-import Home from './Home';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
+import Sitebar from './Nav';
 
 export interface AppProps {
+    
 }
 
 export interface AppState {
-    sessionToken: string
+    sessionToken: string,
+    
 
 }
+
 
 class Main extends React.Component<AppProps, AppState> {
     constructor(props: AppProps) {
         super(props);
         this.state = {
-            sessionToken: ''
-
+            sessionToken: ""
+           
         };
+        this.clearToken = this.clearToken.bind(this);
+        
     }
 
     updateToken = (newToken: string) => {
@@ -29,10 +34,20 @@ class Main extends React.Component<AppProps, AppState> {
         })
     }
 
+    clearToken = () => {
+        localStorage.clear();
+        this.setState({ 
+            sessionToken: "" 
+        });
+    }
 
     protectedViews = () => {
         return localStorage.getItem('token') ? (
-            <Home token={this.state.sessionToken} />
+            <Router>
+            <Sitebar token={this.state.sessionToken} clearToken={this.clearToken}  /> 
+            {/* left side of equation address child component while right side what is created...here.  idk. come back */}
+            
+            </Router>
         ) : (
             <Auth updateToken={this.updateToken} />
         )
@@ -42,18 +57,10 @@ class Main extends React.Component<AppProps, AppState> {
 
         return (
             <React.Fragment>
-                <Router>
-                    <Switch>
-                        <Route exact path='/'>
+                  
                             {this.protectedViews()}
-                        </Route>
-                        {/* <Route exact path="/" component={ Home } />
-                    <Route exact path="/mood" component={ Mood } />
-                    <Route exact path="/goal" component={ Goal } />
-                    <Route exact path="/chart" component={ Chart } />
-                    <Route exact path="/resources" component={ Resources } /> */}
-                    </Switch>
-                </Router>
+                    
+                 
             </React.Fragment>
         )
     }

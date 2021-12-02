@@ -67,7 +67,13 @@ class Register extends Component<RegisterProps, RegisterState> {
                 .then(data => {
                     console.log(data)
                     console.log(data.sessionToken)
-                    this.props.updateToken(data.sessionToken)
+                    if (data.sessionToken !== undefined) {
+                        this.props.updateToken(data.sessionToken)  //is this logic right here?
+                    } else {
+                        alert('Please try again.');
+                    }
+                    
+                
                     let checkToken = data.sessionToken;
                     if (checkToken === undefined) {
                         alert('Please try again');

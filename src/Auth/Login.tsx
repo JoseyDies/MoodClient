@@ -64,14 +64,21 @@ class Login extends Component<LoginProps, LoginState> {
                     console.log(data)
                     console.log(data.sessionToken)
 
-                    this.props.updateToken(data.sessionToken)
-                    let checkToken = data.sessionToken;
-                    if (checkToken === undefined) {
-                        alert('Please try again');
-                        return
+                    if (data.sessionToken !== undefined) {
+                        this.props.updateToken(data.sessionToken) 
                     } else {
-                        alert('You have successfully logged in!')
+                        alert('Please try again.');
                     }
+                    
+                    // let checkToken = data.sessionToken;
+                
+                    // if (checkToken === undefined) {
+                    //     alert('Please try again');
+                    //     return
+                    //     //what am I missing here?
+                    // } else {
+                    //     alert('You have successfully logged in!')
+                    // }
                 })
         } else {
             alert('Please ensure your email and password meet the criteria')
@@ -79,7 +86,7 @@ class Login extends Component<LoginProps, LoginState> {
     }
 
     render() {
-        const { errors } = this.state
+        // const { errors } = this.state
         return (
 
             <div className='wrapper'>
@@ -93,7 +100,7 @@ class Login extends Component<LoginProps, LoginState> {
                         <div className='password'>
                             <label htmlFor='password'>Password</label>
                             <input type='password' name='password' onChange={this.handleChange} />
-                            {errors.password.length > 0 && <span style={{ color: 'red' }}>{errors.password}</span>}
+                            {/* {errors.password.length > 0 && <span style={{ color: 'red' }}>{errors.password}</span>} */}
                         </div>
                         <div className='submit'>
                             <button>Log In</button>

@@ -1,5 +1,5 @@
 import React from 'react';
-import Nav from './Nav';
+
 
 export interface HomeProps {
     token: string,
@@ -21,7 +21,7 @@ class Home extends React.Component<HomeProps, HomeState> {
     render() { 
         return (
             <div>
-                <Nav />
+          
                 
        
                 <p>This is home.</p>
