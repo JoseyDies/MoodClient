@@ -1,14 +1,18 @@
 import React from 'react';
+import CreateGoal from './CreateGoal';
+import GetGoal from './GetGoal';
 
-export interface MoodProps {
+export interface GoalProps {
     token: string,
         // clearToken: Function
     
 }
-const Goal = () => {
+const Goal = (props: { token: string }) => {
 
     return (
         <div>
+            <CreateGoal token={props.token}/>
+            <GetGoal token={props.token}/>
             <p>This is the goal page.</p>
         </div>
     );

@@ -4,7 +4,7 @@ import GetMood from './GetMood';
 
 export interface MoodProps {
     token: string,
-        // clearToken: Function
+       
     
 }
 const Mood = (props: { token: string }) => {
@@ -13,6 +13,7 @@ const Mood = (props: { token: string }) => {
         <div>
             <CreateMood token={props.token}/>
             <GetMood token={props.token}/>
+            
             <p>This is the mood page.</p>
         </div>
     );

@@ -41,7 +41,7 @@ const Sitebar = (props: propTypes) => {
                     <Mood token={props.token}/>
                 </Route>
                 <Route exact path='/goal'>
-                    <Goal />
+                    <Goal token={props.token}/>
                 </Route>
                 <Route exact path='/resources'>
                     <Resources />

@@ -2,6 +2,7 @@
 import React, { Component, FormEvent } from "react";
 import { Input, FormGroup } from 'reactstrap';
 
+
 //APPEARS TO BE MOSTLY SUCCESSFUL. CONTINUE TESTING. ADD ALERTS FOR ERRORS AND COMFIRMATION
 
 export interface MoodEntryCreateProps {
@@ -108,7 +109,7 @@ class CreateMood extends Component<MoodEntryCreateProps, MoodEntryCreateState> {
                             <label htmlFor='moodText'>What else am I feeling?</label>
                             <br></br>
                                 <FormGroup>
-                                    {/* <Input name="moodText" type="textarea" value={this.state.moodText}  onChange={(e) => this.setState({ moodText String(e.target.value) })} </Input> */}
+                                   
                                     <Input type='textarea' name='moodText' value={this.state.moodText} onChange={(e) => this.setState({ moodText: String(e.target.value) })} ></Input>
                                 </FormGroup>
                             </div>
@@ -119,7 +120,9 @@ class CreateMood extends Component<MoodEntryCreateProps, MoodEntryCreateState> {
                         </div>
                     </form>
                 </div>
+               
             </div>
+     
         );
     }
 

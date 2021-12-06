@@ -33,6 +33,7 @@ class Main extends React.Component<AppProps, AppState> {
             sessionToken: newToken
         })
     }
+//create variable local to this file, maybe "isAdmin". Would add another paramter to updateToken in addition to a newToken. Could set state to isAdmin after line 32. Pass that into sitebar. In sitebar, check to make sure role is admin. 
 
     clearToken = () => {
         localStorage.clear();

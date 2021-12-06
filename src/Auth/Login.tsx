@@ -70,21 +70,17 @@ class Login extends Component<LoginProps, LoginState> {
                         alert('Please try again.');
                     }
                     
-                    // let checkToken = data.sessionToken;
-                
-                    // if (checkToken === undefined) {
-                    //     alert('Please try again');
-                    //     return
-                    //     //what am I missing here?
-                    // } else {
-                    //     alert('You have successfully logged in!')
-                    // }
                 })
         } else {
             alert('Please ensure your email and password meet the criteria')
         }
     }
 
+    // {this.state.showLogin ? (
+    //     <Register updateToken={this.props.updateToken} /> 
+    //     ) : (
+    //     <Login updateToken={this.props.updateToken} />  
+    //     )}
     render() {
         // const { errors } = this.state
         return (

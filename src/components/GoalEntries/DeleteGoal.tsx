@@ -1,9 +1,43 @@
 import { Component } from "react";
+import {
+     Button
+} from 'reactstrap';
 
-export default class DeleteGoal extends Component<{}, {}> {
-    render () {
+export interface DeleteGoalProps {
+    token: string,
+    fetchGoals: Function,
+    id: string
+}
+
+
+
+class DeleteGoal extends Component<DeleteGoalProps, {}> {
+    constructor(props: DeleteGoalProps) {
+        super(props);
+        this.state = {};
+    }
+    deleteGoalEntry = () => {
+        let APIUrl = 'http://localhost:3000';
+        fetch(`${APIUrl}/goal/delete/${this.props.id}`, {
+            method: 'DELETE',
+            headers: new Headers({
+                'Content-Type': 'application/json',
+                'Authorization': this.props.token,
+            })
+        }).then(() => this.props.fetchGoals())
+    }
+
+    render() {
         return (
-            <div></div>
+            <div>
+
+
+
+                <Button onClick={(e) => this.deleteGoalEntry()}>Delete Entry</Button>
+
+            </div>
         )
     }
 }
+
+export default DeleteGoal;
