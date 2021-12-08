@@ -4,7 +4,7 @@ import GetGoal from './GetGoal';
 
 export interface GoalProps {
     token: string,
-        // clearToken: Function
+       
     
 }
 const Goal = (props: { token: string }) => {

@@ -31,7 +31,7 @@ class EditGoal extends Component<EditGoalProps, EditGoalState> {
         this.UpdateGoal = this.UpdateGoal.bind(this);
     }
 
-    UpdateGoal = (event: any) => {
+    UpdateGoal = (event: React.FormEvent<HTMLFormElement>) => {
         event?.preventDefault();
         // let userID = this.state.userID
         let APIUrl = 'http://localhost:3000';
@@ -63,7 +63,7 @@ class EditGoal extends Component<EditGoalProps, EditGoalState> {
                 <Modal isOpen={this.state.modal} toggle={this.toggle} >
                     <ModalHeader >Edit Goal Entry</ModalHeader>
                     <ModalBody>
-                        <Form onSubmit={this.UpdateGoal}>
+                        <Form onSubmit={(e) => this.UpdateGoal(e)}>
                         <FormGroup>
                                     <Label htmlFor="twoMG">Edit two-month goal:</Label>
                                     <Input name="twoMG" value={this.state.twoMonthG} onChange={(e) => this.setState({ twoMonthG: e.target.value })} />

@@ -9,7 +9,7 @@ interface RegisterState {
     lastName: string,
     email: string,
     password: string,
-    role: any,
+
     errors: {
         password: string
     }
@@ -24,7 +24,8 @@ class Register extends Component<RegisterProps, RegisterState> {
             lastName: '',
             email: '',
             password: '',
-            role: 'user',
+            // role: '',
+
             errors: {
                 password: ''
             }
@@ -33,7 +34,7 @@ class Register extends Component<RegisterProps, RegisterState> {
         this.handleChange = this.handleChange.bind(this);
     }
 
-    handleChange = (event: any) => {
+    handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         event.preventDefault();
         const { name, value } = event.target;
         let errors = this.state.errors;
@@ -68,12 +69,10 @@ class Register extends Component<RegisterProps, RegisterState> {
                     console.log(data)
                     console.log(data.sessionToken)
                     if (data.sessionToken !== undefined) {
-                        this.props.updateToken(data.sessionToken)  
+                        this.props.updateToken(data.sessionToken) //, data.user.role
                     } else {
                         alert('Please try again.');
                     }
-                    
-                
                     let checkToken = data.sessionToken;
                     if (checkToken === undefined) {
                         alert('Please try again');
@@ -99,19 +98,19 @@ class Register extends Component<RegisterProps, RegisterState> {
 
                             <div className='firstName'>
                                 <label htmlFor='firstName'>First Name</label>
-                                <input type='text' name='firstName' onChange={this.handleChange} />
+                                <input type='text' name='firstName' onChange={(e) => this.handleChange(e)} />
                             </div>
                             <div className='lastName'>
                                 <label htmlFor='lastName'>Last Name</label>
-                                <input type='text' name='lastName' onChange={this.handleChange} />
+                                <input type='text' name='lastName' onChange={(e) => this.handleChange(e)} />
                             </div>
                             <div className='email'>
                                 <label htmlFor='email'>Email</label>
-                                <input type='text' name='email' onChange={this.handleChange} />
+                                <input type='text' name='email' onChange={(e) => this.handleChange(e)} />
                             </div>
                             <div className='password'>
                                 <label htmlFor='password'>Password</label>
-                                <input type='password' name='password' onChange={this.handleChange} />
+                                <input type='password' name='password' onChange={(e) => this.handleChange(e)} />
                                 {errors.password.length > 0 && <span style={{ color: 'red' }}>{errors.password}</span>}
                             </div>
 

@@ -17,6 +17,8 @@ class DeleteMood extends Component<DeleteMoodProps, {}> {
         this.state = {};
     }
     deleteMoodEntry = () => {
+        const deleteWarning = window.confirm("Are you sure you want to delete this user? This is a permanent action that cannot be undone.");
+        if (deleteWarning) {
         let APIUrl = 'http://localhost:3000';
         fetch(`${APIUrl}/mood/delete/${this.props.id}`, {
             method: 'DELETE',
@@ -25,7 +27,7 @@ class DeleteMood extends Component<DeleteMoodProps, {}> {
                 'Authorization': this.props.token,
             })
         }).then(() => this.props.fetchMoods())
-    }
+    }}
 
     render() {
         return (

@@ -20,7 +20,7 @@ class Auth extends React.Component<AuthProps, AuthState> {
         this.handleToggle = this.handleToggle.bind(this);
     }
 
-    handleToggle = (event: any) => {
+    handleToggle = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         event.preventDefault();
         this.setState({showLogin: !this.state.showLogin})
     }
@@ -35,9 +35,9 @@ class Auth extends React.Component<AuthProps, AuthState> {
             )}
             <div>
                 {this.state.showLogin ? (
-                    <button className = "Authbutton" onClick={this.handleToggle}>Already a member? Login here.</button>
+                    <button className = "Authbutton" onClick={(e) => {this.handleToggle(e)}}>Already a member? Login here.</button>
                 ) : (
-                    <button className = "Authbutton" onClick ={this.handleToggle}>New here? Signup here!</button>
+                    <button className = "Authbutton" onClick ={(e) => {this.handleToggle(e)}}>New here? Signup here!</button>
                 )}
             </div>
         </div>

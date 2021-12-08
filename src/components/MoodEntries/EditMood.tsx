@@ -42,7 +42,7 @@ class EditMood extends Component<EditMoodProps, EditMoodState> {
         this.UpdateMood = this.UpdateMood.bind(this);
     }
 
-    UpdateMood = (event: any) => {
+    UpdateMood = (event: React.FormEvent<HTMLFormElement>) => {
         event?.preventDefault();
         // let userID = this.state.userID
         let APIUrl = 'http://localhost:3000';
@@ -77,7 +77,7 @@ class EditMood extends Component<EditMoodProps, EditMoodState> {
                 <Modal isOpen={this.state.modal} toggle={this.toggle} >
                     <ModalHeader >Edit Mood Entry</ModalHeader>
                     <ModalBody>
-                        <Form onSubmit={this.UpdateMood}>
+                        <Form onSubmit={(e) => this.UpdateMood(e)}>
                             <FormGroup>
                                 <Label htmlFor="sleep">Edit Sleep:</Label>
                                 <Input name="sleep" type="select" value={this.state.sleep} onChange={(e) => this.setState({ sleep: e.target.value })} >

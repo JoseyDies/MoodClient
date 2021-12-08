@@ -53,14 +53,10 @@ export default class GetGoal extends Component<GoalProps, GoalState> {
                 this.setState({
                     goals: response
                 });
-                console.log("Moods:", this.state.goals);
+                console.log("Goals:", this.state.goals);
             })
-            .catch((error) => console.log("fetchMoods Error:", error))
+            .catch((error) => console.log("fetchGoals Error:", error))
     }
-
-    // componentWillMount() {
-    //     
-    // };
 
 
 

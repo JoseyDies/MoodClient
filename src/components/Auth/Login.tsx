@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 
 export interface LoginProps {
-    updateToken: Function
+    updateToken: Function,
+    // role: string
 
 }
 
 export interface LoginState {
     email: string,
     password: string,
+    // role: string
     errors: {
         password: string
     }
@@ -21,6 +23,7 @@ class Login extends Component<LoginProps, LoginState> {
         const initialState = {
             email: '',
             password: '',
+            role: '',
             errors: {
                 password: ''
             }
@@ -61,28 +64,21 @@ class Login extends Component<LoginProps, LoginState> {
             })
                 .then(response => response.json())
                 .then(data => {
-                    console.log(data)
-                    console.log(data.sessionToken)
-
+                    
                     if (data.sessionToken !== undefined) {
-                        this.props.updateToken(data.sessionToken) 
+                        this.props.updateToken(data.sessionToken, data.user.role)
                     } else {
                         alert('Please try again.');
                     }
-                    
                 })
         } else {
             alert('Please ensure your email and password meet the criteria')
         }
+           
     }
 
-    // {this.state.showLogin ? (
-    //     <Register updateToken={this.props.updateToken} /> 
-    //     ) : (
-    //     <Login updateToken={this.props.updateToken} />  
-    //     )}
     render() {
-        // const { errors } = this.state
+      
         return (
 
             <div className='wrapper'>
@@ -96,7 +92,7 @@ class Login extends Component<LoginProps, LoginState> {
                         <div className='password'>
                             <label htmlFor='password'>Password</label>
                             <input type='password' name='password' onChange={this.handleChange} />
-                            {/* {errors.password.length > 0 && <span style={{ color: 'red' }}>{errors.password}</span>} */}
+                            
                         </div>
                         <div className='submit'>
                             <button>Log In</button>

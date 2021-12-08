@@ -1,15 +1,6 @@
-// import { Component } from "react";
-
-// export default class CreateGoal extends Component<{}, {}> {
-//     render () {
-//         return (
-//             <div></div>
-//         )
-//     }
-// }
-
 import React, { Component, FormEvent } from "react";
 import { Input, FormGroup } from 'reactstrap';
+import { toast, ToastContainer } from 'react-toastify';
 
 
 //APPEARS TO BE MOSTLY SUCCESSFUL. CONTINUE TESTING. ADD ALERTS FOR ERRORS AND COMFIRMATION
@@ -54,8 +45,11 @@ class CreateGoal extends Component<GoalEntryCreateProps, GoalEntryCreateState> {
                     twoMonthG: ''
                     
                 })
-
+                toast.success("Submission Successful!", {
+                    position: toast.POSITION.TOP_CENTER
+                  });
             })
+         
     }
 
     render() {
@@ -82,6 +76,7 @@ class CreateGoal extends Component<GoalEntryCreateProps, GoalEntryCreateState> {
                             <button>Submit</button>
                         </div>
                     </form>
+                <ToastContainer/>
                 </div>
             </div>
      

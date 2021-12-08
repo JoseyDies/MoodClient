@@ -17,6 +17,8 @@ class DeleteGoal extends Component<DeleteGoalProps, {}> {
         this.state = {};
     }
     deleteGoalEntry = () => {
+        const deleteWarning = window.confirm("Are you sure you want to delete this user? This is a permanent action that cannot be undone.");
+       if (deleteWarning) {
         let APIUrl = 'http://localhost:3000';
         fetch(`${APIUrl}/goal/delete/${this.props.id}`, {
             method: 'DELETE',
@@ -25,7 +27,7 @@ class DeleteGoal extends Component<DeleteGoalProps, {}> {
                 'Authorization': this.props.token,
             })
         }).then(() => this.props.fetchGoals())
-    }
+    }}
 
     render() {
         return (
