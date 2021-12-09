@@ -2,6 +2,7 @@ import { Component } from "react";
 import DeleteGoal from "./DeleteGoal";
 import EditGoal from './EditGoal';
 import 'react-toastify/dist/ReactToastify.css';
+import APIURL from "../../helpers/environment";
 
 
 
@@ -39,9 +40,7 @@ export default class GetGoal extends Component<GoalProps, GoalState> {
 
     fetchGoals() {
         console.log(this.props.token);
-        
-        let APIUrl = 'http://localhost:3000';
-        fetch(`${APIUrl}/goal/mygoalentries`, {
+        fetch(`${APIURL}/goal/mygoalentries`, {
             method: "GET",
             headers: new Headers({
                 "Content-Type": "application/json",

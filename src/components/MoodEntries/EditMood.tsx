@@ -1,6 +1,7 @@
 import { Component } from "react";
 import { Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input } from 'reactstrap';
 import { toast } from 'react-toastify';
+import APIURL from "../../helpers/environment";
 //may need to input stylesheet to make modal pop out 
 
 export interface EditMoodProps {
@@ -46,8 +47,8 @@ class EditMood extends Component<EditMoodProps, EditMoodState> {
     UpdateMood = (event: React.FormEvent<HTMLFormElement>) => {
         event?.preventDefault();
         // let userID = this.state.userID
-        let APIUrl = 'http://localhost:3000';
-        fetch(`${APIUrl}/mood/update/${this.props.id}`, { 
+       
+        fetch(`${APIURL}/mood/update/${this.props.id}`, { 
             method: 'PUT',
             body: JSON.stringify({ sleep: this.state.sleep, energy: this.state.energy, appetite: this.state.appetite, overallMood: this.state.overallMood, moodText: this.state.moodText }),
             headers: new Headers({

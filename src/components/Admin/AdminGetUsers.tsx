@@ -1,4 +1,5 @@
 import React from 'react';
+import APIURL from '../../helpers/environment';
 import DeleteUser from './DeleteUser';
 
 
@@ -31,8 +32,7 @@ class Admin extends React.Component<GetUsersProps, GetUsersState> {
     }
 
     fetchUsers() {
-        let APIUrl = 'http://localhost:3000';
-        fetch(`${APIUrl}/user/admin/allusers`, {
+        fetch(`${APIURL}/user/admin/allusers`, {
             method: "GET",
             headers: new Headers({
                 "Content-Type": "application/json",

@@ -3,6 +3,7 @@ import React, { Component, FormEvent } from "react";
 import { Input, FormGroup } from 'reactstrap';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import APIURL from "../../helpers/environment";
 
 
 //APPEARS TO BE MOSTLY SUCCESSFUL. CONTINUE TESTING. ADD ALERTS FOR ERRORS AND COMFIRMATION
@@ -36,8 +37,7 @@ class CreateMood extends Component<MoodEntryCreateProps, MoodEntryCreateState> {
         event.preventDefault();
         console.log(this.props.token)
 
-        let APIUrl = 'http://localhost:3000';
-        fetch(`${APIUrl}/mood/create`, {
+        fetch(`${APIURL}/mood/create`, {
             method: 'POST',
             body: JSON.stringify({ sleep: this.state.sleep, energy: this.state.energy, appetite: this.state.appetite, overallMood: this.state.overallMood, moodText: this.state.moodText }),
             headers: new Headers({

@@ -1,6 +1,7 @@
 import { Component } from "react";
 import { Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input } from 'reactstrap';
 import { toast } from 'react-toastify';
+import APIURL from "../../helpers/environment";
 //may need to input stylesheet to make modal pop out 
 
 export interface EditGoalProps {
@@ -34,9 +35,8 @@ class EditGoal extends Component<EditGoalProps, EditGoalState> {
 
     UpdateGoal = (event: React.FormEvent<HTMLFormElement>) => {
         event?.preventDefault();
-        // let userID = this.state.userID
-        let APIUrl = 'http://localhost:3000';
-        fetch(`${APIUrl}/goal/updategoal/${this.props.id}`, { 
+     
+        fetch(`${APIURL}/goal/updategoal/${this.props.id}`, { 
             method: 'PUT',
             body: JSON.stringify({ twoWeekG: this.state.twoWeekG, twoMonthG: this.state.twoMonthG  }),
             headers: new Headers({

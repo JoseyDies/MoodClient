@@ -2,6 +2,7 @@ import { Component } from "react";
 import DeleteMood from "./DeleteMood";
 import EditMood from "./EditMood";
 import 'react-toastify/dist/ReactToastify.css';
+import APIURL from "../../helpers/environment";
 
 // import { Form } from 'reactstrap';
 
@@ -41,8 +42,8 @@ export default class GetMood extends Component<MoodProps, MoodState> {
     fetchMoods() {
         console.log(this.props.token);
         
-        let APIUrl = 'http://localhost:3000';
-        fetch(`${APIUrl}/mood/mymoodentries`, {
+     
+        fetch(`${APIURL}/mood/mymoodentries`, {
             method: "GET",
             headers: new Headers({
                 "Content-Type": "application/json",

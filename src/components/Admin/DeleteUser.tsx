@@ -4,6 +4,7 @@ import {
 } from 'reactstrap';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import APIURL from "../../helpers/environment";
 
 export interface DeleteUserProps {
     token: string,
@@ -23,8 +24,8 @@ class DeleteUser extends Component<DeleteUserProps, {}> {
     adminDeleteUser = () => {
         const deleteWarning = window.confirm("Are you sure you want to delete this user? This is a permanent action that cannot be undone.");
         if (deleteWarning) {
-            let APIUrl = 'http://localhost:3000';
-            fetch(`${APIUrl}/user/admin/delete/${this.props.id}`, {
+            
+            fetch(`${APIURL}/user/admin/delete/${this.props.id}`, {
                 method: 'DELETE',
                 headers: new Headers({
                     'Content-Type': 'application/json',

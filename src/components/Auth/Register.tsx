@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import APIURL from '../../helpers/environment';
 
 interface RegisterProps {
     updateToken: Function
@@ -56,8 +57,8 @@ class Register extends Component<RegisterProps, RegisterState> {
             (val) => val.length > 0 && (validity = false)
         );
         if (validity === true) {
-            let APIUrl = 'http://localhost:3000';
-            fetch(`${APIUrl}/user/register`, {
+           
+            fetch(`${APIURL}/user/register`, {
                 method: 'POST',
                 body: JSON.stringify({ firstName: this.state.firstName, lastName: this.state.lastName, email: this.state.email, password: this.state.password }),
                 headers: new Headers({

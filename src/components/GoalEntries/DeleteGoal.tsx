@@ -3,6 +3,7 @@ import {
      Button
 } from 'reactstrap';
 import { toast } from 'react-toastify';
+import APIURL from "../../helpers/environment";
 
 export interface DeleteGoalProps {
     token: string,
@@ -20,8 +21,8 @@ class DeleteGoal extends Component<DeleteGoalProps, {}> {
     deleteGoalEntry = () => {
         const deleteWarning = window.confirm("Are you sure you want to delete this user? This is a permanent action that cannot be undone.");
        if (deleteWarning) {
-        let APIUrl = 'http://localhost:3000';
-        fetch(`${APIUrl}/goal/delete/${this.props.id}`, {
+        
+        fetch(`${APIURL}/goal/delete/${this.props.id}`, {
             method: 'DELETE',
             headers: new Headers({
                 'Content-Type': 'application/json',

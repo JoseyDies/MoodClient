@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import APIURL from '../../helpers/environment';
 
 export interface LoginProps {
     updateToken: Function,
@@ -54,8 +55,8 @@ class Login extends Component<LoginProps, LoginState> {
             (val) => val.length > 0 && (validity = false)
         );
         if (validity === true) {
-            let APIUrl = 'http://localhost:3000';
-            fetch(`${APIUrl}/user/login`, {
+         
+            fetch(`${APIURL}/user/login`, {
                 method: 'POST',
                 body: JSON.stringify({ email: this.state.email, password: this.state.password }),
                 headers: new Headers({
