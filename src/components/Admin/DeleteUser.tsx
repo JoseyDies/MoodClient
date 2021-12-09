@@ -2,7 +2,7 @@ import { Component } from "react";
 import {
     Button
 } from 'reactstrap';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export interface DeleteUserProps {
@@ -18,7 +18,7 @@ class DeleteUser extends Component<DeleteUserProps, {}> {
         super(props);
         this.state = {};
     }
-    
+
 
     adminDeleteUser = () => {
         const deleteWarning = window.confirm("Are you sure you want to delete this user? This is a permanent action that cannot be undone.");
@@ -34,28 +34,27 @@ class DeleteUser extends Component<DeleteUserProps, {}> {
                 .then(response => response.json())
                 .then(data => {
                     console.log(data);
-                    this.props.fetchUsers();
+                    this.props.fetchUsers()
+
                 })
-                .catch(err => console.log(err))
+                .then(() => toast.success("Successfully deleted", {
+                    position: toast.POSITION.TOP_CENTER
+                  }))
+                .catch(err => console.log(err));
+            }}
 
-        } else {
-            console.log("Delete cancelled.");
-        }
-    }
+    render() {
+        return (
+            <div>
 
+               <ToastContainer />
+               
+                <Button onClick={(e) => this.adminDeleteUser()}>Delete User</Button>
 
-
-render() {
-    return (
-        <div>
-
+            </div>
             
-
-            <Button onClick={(e) => this.adminDeleteUser()}>Delete User</Button>
-
-        </div>
-    )
-}
+        )
+    }
 }
 
 export default DeleteUser;

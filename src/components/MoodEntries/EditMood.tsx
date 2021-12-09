@@ -1,5 +1,6 @@
 import { Component } from "react";
 import { Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input } from 'reactstrap';
+import { toast } from 'react-toastify';
 //may need to input stylesheet to make modal pop out 
 
 export interface EditMoodProps {
@@ -66,7 +67,11 @@ class EditMood extends Component<EditMoodProps, EditMoodState> {
                 })
                 this.props.fetchMoods()
             })
-    }
+            .then(() => toast.success("Update Successful!", {
+                position: toast.POSITION.TOP_CENTER
+              })) 
+              .catch(err => console.log(err));
+        };
 
     toggle = () => this.setState({ modal: !this.state.modal });
 

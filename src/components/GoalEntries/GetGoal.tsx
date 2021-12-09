@@ -1,6 +1,8 @@
 import { Component } from "react";
 import DeleteGoal from "./DeleteGoal";
 import EditGoal from './EditGoal';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 // import { Form } from 'reactstrap';

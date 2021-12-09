@@ -2,6 +2,7 @@ import { Component } from "react";
 import {
      Button
 } from 'reactstrap';
+import { toast } from 'react-toastify';
 
 export interface DeleteGoalProps {
     token: string,
@@ -27,16 +28,19 @@ class DeleteGoal extends Component<DeleteGoalProps, {}> {
                 'Authorization': this.props.token,
             })
         }).then(() => this.props.fetchGoals())
+        .then(() => toast.success("Successfully deleted", {
+            position: toast.POSITION.TOP_CENTER
+          }))
+        .catch(err => console.log(err));
     }}
 
     render() {
         return (
             <div>
 
-
-
+                
                 <Button onClick={(e) => this.deleteGoalEntry()}>Delete Entry</Button>
-
+                
             </div>
         )
     }

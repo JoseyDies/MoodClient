@@ -1,6 +1,8 @@
 import { Component } from "react";
 import DeleteMood from "./DeleteMood";
 import EditMood from "./EditMood";
+import 'react-toastify/dist/ReactToastify.css';
+
 // import { Form } from 'reactstrap';
 
 type MoodState = {

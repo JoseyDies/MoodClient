@@ -1,6 +1,8 @@
 
 import React, { Component, FormEvent } from "react";
 import { Input, FormGroup } from 'reactstrap';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 //APPEARS TO BE MOSTLY SUCCESSFUL. CONTINUE TESTING. ADD ALERTS FOR ERRORS AND COMFIRMATION
@@ -28,7 +30,7 @@ class CreateMood extends Component<MoodEntryCreateProps, MoodEntryCreateState> {
             moodText: ''
         }
     }
-  
+
 
     handleSubmit = (event: FormEvent) => {
         event.preventDefault();
@@ -52,11 +54,14 @@ class CreateMood extends Component<MoodEntryCreateProps, MoodEntryCreateState> {
                     appetite: "",
                     overallMood: "",
                     moodText: "",
-                    
-                })
 
+                })
+                toast.success("Submission Successful!", {
+                    position: toast.POSITION.TOP_CENTER
+                });
             })
-    }
+            .catch(err => console.log(err))
+    };
 
     render() {
         return (
@@ -106,10 +111,10 @@ class CreateMood extends Component<MoodEntryCreateProps, MoodEntryCreateState> {
                                 <option value="Elated">Elated</option>
                             </Input>
                             <div className="moodTextDiv">
-                            <label htmlFor='moodText'>What else am I feeling?</label>
-                            <br></br>
+                                <label htmlFor='moodText'>What else am I feeling?</label>
+                                <br></br>
                                 <FormGroup>
-                                   
+
                                     <Input type='textarea' name='moodText' value={this.state.moodText} onChange={(e) => this.setState({ moodText: String(e.target.value) })} ></Input>
                                 </FormGroup>
                             </div>
@@ -119,10 +124,11 @@ class CreateMood extends Component<MoodEntryCreateProps, MoodEntryCreateState> {
                             <button>Submit</button>
                         </div>
                     </form>
+                   <ToastContainer />
                 </div>
-               
+
             </div>
-     
+
         );
     }
 

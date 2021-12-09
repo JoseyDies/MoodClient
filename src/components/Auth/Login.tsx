@@ -61,22 +61,22 @@ class Login extends Component<LoginProps, LoginState> {
                 headers: new Headers({
                     'Content-Type': 'application/json'
                 })
+                
             })
                 .then(response => response.json())
                 .then(data => {
                     
                     if (data.sessionToken !== undefined) {
                         this.props.updateToken(data.sessionToken, data.user.role)
+                        
                     } else {
                         alert('Please try again.');
                     }
                 })
         } else {
-            alert('Please ensure your email and password meet the criteria')
+            alert('Please ensure your email and password meet the criteria') 
         }
-           
     }
-
     render() {
       
         return (

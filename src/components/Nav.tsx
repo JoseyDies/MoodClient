@@ -42,8 +42,7 @@ const Sitebar = (props: propTypes) => {
                             <Link to="/admin" className="site-link">Admin</Link>
                         </NavItem>
                     ) : (<div>Your aren't an admin!</div>)}
-               
-                    
+                
 
                 </Nav>
             </Navbar>

@@ -68,6 +68,7 @@ class Register extends Component<RegisterProps, RegisterState> {
                 .then(data => {
                     console.log(data)
                     console.log(data.sessionToken)
+                    
                     if (data.sessionToken !== undefined) {
                         this.props.updateToken(data.sessionToken) //, data.user.role
                     } else {
@@ -75,17 +76,16 @@ class Register extends Component<RegisterProps, RegisterState> {
                     }
                     let checkToken = data.sessionToken;
                     if (checkToken === undefined) {
-                        alert('Please try again');
+                        alert('Please try again.');
                         return
                     } else {
                         alert('You have successfully signed up!')
                     }
                 })
         } else {
-            alert('Please ensure password meets the criteria')
+            alert('Please ensure password meets the criteria.')
         }
     }
-
 
     render() {
         const { errors } = this.state

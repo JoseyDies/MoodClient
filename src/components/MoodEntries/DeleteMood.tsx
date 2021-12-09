@@ -2,6 +2,7 @@ import { Component } from "react";
 import {
      Button
 } from 'reactstrap';
+import { toast } from 'react-toastify';
 
 export interface DeleteMoodProps {
     token: string,
@@ -27,6 +28,10 @@ class DeleteMood extends Component<DeleteMoodProps, {}> {
                 'Authorization': this.props.token,
             })
         }).then(() => this.props.fetchMoods())
+        .then(() => toast.success("Successfully deleted", {
+            position: toast.POSITION.TOP_CENTER
+          }))
+        .catch(err => console.log(err));
     }}
 
     render() {
