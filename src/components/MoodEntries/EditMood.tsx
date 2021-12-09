@@ -58,11 +58,11 @@ class EditMood extends Component<EditMoodProps, EditMoodState> {
             .then(response => response.json())
             .then((updateData) => {
                 this.setState({
-                    sleep: '',
-                    energy: '',
-                    appetite: '',
-                    overallMood: '',
-                    moodText: '',
+                    sleep: this.props.moodEntry.sleep,
+                    energy: this.props.moodEntry.energy,
+                    appetite: this.props.moodEntry.appetite,
+                    overallMood: this.props.moodEntry.overallMood,
+                    moodText: this.props.moodEntry.moodText
                     
                 })
                 this.props.fetchMoods()
@@ -103,7 +103,7 @@ class EditMood extends Component<EditMoodProps, EditMoodState> {
                             </FormGroup>
                             <FormGroup>
                                 <Label htmlFor="appetite">Edit Appetite:</Label>
-                                <Input name="appetite" value={this.state.appetite} onChange={(e) => this.setState({ appetite: e.target.value })} >
+                                <Input type="select" name="appetite" value={this.state.appetite} onChange={(e) => this.setState({ appetite: e.target.value })} >
                                     <option hidden></option>
                                     <option value="Low">Low</option>
                                     <option value="Average">Average</option>

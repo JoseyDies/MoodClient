@@ -81,7 +81,7 @@ class Register extends Component<RegisterProps, RegisterState> {
                     } else {
                         alert('You have successfully signed up!')
                     }
-                })
+                }).catch(err => console.log(err));
         } else {
             alert('Please ensure password meets the criteria.')
         }

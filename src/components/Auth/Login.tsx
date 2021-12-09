@@ -72,7 +72,7 @@ class Login extends Component<LoginProps, LoginState> {
                     } else {
                         alert('Please try again.');
                     }
-                })
+                }).catch(err => console.log(err));
         } else {
             alert('Please ensure your email and password meet the criteria') 
         }

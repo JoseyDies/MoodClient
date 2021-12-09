@@ -74,6 +74,7 @@ export default class GetMood extends Component<MoodProps, MoodState> {
                 {this.state.moods.map((moodEntry: MoodInfo, index: number) => {
                     return (
                         <div key={index}>
+                        
 
                             {moodEntry.sleep}
                             <br />
