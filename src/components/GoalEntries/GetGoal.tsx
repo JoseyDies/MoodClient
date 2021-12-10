@@ -3,6 +3,7 @@ import DeleteGoal from "./DeleteGoal";
 import EditGoal from './EditGoal';
 import 'react-toastify/dist/ReactToastify.css';
 import APIURL from "../../helpers/environment";
+// import Home from '../Home/Home';
 
 
 
@@ -21,7 +22,8 @@ type GoalInfo = {
 
     twoWeekG: string,
     twoMonthG: string,
-    id: string
+    id: string,
+    // firstName: string
     //date
 };
 
@@ -75,11 +77,14 @@ export default class GetGoal extends Component<GoalProps, GoalState> {
                             <br />
                             <EditGoal token={this.props.token} fetchGoals={this.fetchGoals} id={goalEntry.id} goalEntry={goalEntry} />
                             <DeleteGoal token={this.props.token} fetchGoals={this.fetchGoals} id={goalEntry.id} />
-
+                            {/* <Home token={this.props.token} />  */}
+                            {/* firstName={goalEntry.firstName}  */}
                         </div>
+                        
                     )
                 })}
             </div>
+            
         )
     }
 };

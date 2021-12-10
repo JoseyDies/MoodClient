@@ -1,0 +1,23 @@
+    .homeContainer {
+    height: 100vh;
+    width: 100%;
+    padding-top: 7%;
+    background-image: url('../Images/nenad-tocilovac-Ue5ih3Vfhy4-unsplash.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+  
+}
+
+p {
+    text-align: center;
+    font-size: 9vh;
+    font-family: 'Lato', sans-serif;
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Playfair Display', serif;
+    color: whitesmoke
+}
+
+p.offsetHeader {
+    padding-left: 35%;
+}
+

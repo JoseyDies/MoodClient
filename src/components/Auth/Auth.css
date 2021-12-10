@@ -1,0 +1,63 @@
+
+
+.authContainer {
+    height: 100vh;
+    width: 100%;
+    background-color: #004751;
+    padding-top: 3%;
+    background-size: cover;
+    text-align: center;
+}
+
+
+h1 {
+    
+	background-image: url(https://media.giphy.com/media/26BROrSHlmyzzHf3i/giphy.gif);
+	color: transparent;
+    background-size: cover;
+    -moz-background-clip: text;
+	-webkit-background-clip: text;
+    font-family: 'Playfair Display', serif;
+	line-height: 1;
+    
+}
+
+Form {
+        max-width: 30%;
+        margin: 0 auto 20px;
+        border-radius: 4px;
+        background-color: #58684B;
+        padding: 20px;
+        box-sizing: border-box;
+        font-weight: bold;
+        
+      }
+
+
+Button {
+        
+        margin: 0 auto 20px;
+        border-radius: 4px;
+        padding: 20px;
+        box-sizing: border-box;
+      }
+
+.toggleButtons {
+    display: flex;
+    justify-content: center;
+}
+
+h2 {
+    color:#251F1C;
+    font-family: 'Source Sans 3', sans-serif;
+}
+
+h3 {
+    color:#251F1C;
+    font-family: 'Source Sans 3', sans-serif; 
+}
+
+/* Nav {
+    display: inline-flex;
+    justify-content: space-evenly;
+} */

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import APIURL from '../../helpers/environment';
+import { Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input } from 'reactstrap';
+
 
 interface RegisterProps {
     updateToken: Function
@@ -57,7 +59,7 @@ class Register extends Component<RegisterProps, RegisterState> {
             (val) => val.length > 0 && (validity = false)
         );
         if (validity === true) {
-           
+
             fetch(`${APIURL}/user/register`, {
                 method: 'POST',
                 body: JSON.stringify({ firstName: this.state.firstName, lastName: this.state.lastName, email: this.state.email, password: this.state.password }),
@@ -69,7 +71,7 @@ class Register extends Component<RegisterProps, RegisterState> {
                 .then(data => {
                     console.log(data)
                     console.log(data.sessionToken)
-                    
+
                     if (data.sessionToken !== undefined) {
                         this.props.updateToken(data.sessionToken) //, data.user.role
                     } else {
@@ -94,31 +96,39 @@ class Register extends Component<RegisterProps, RegisterState> {
             <div className='siteName'>
                 <div className='wrapper'>
                     <div className='form-wrapper'>
-                        <h2>Register</h2>
-                        <form onSubmit={this.handleSubmit} noValidate >
+        
+                        <Form onSubmit={this.handleSubmit} noValidate >
 
-                            <div className='firstName'>
-                                <label htmlFor='firstName'>First Name</label>
-                                <input type='text' name='firstName' onChange={(e) => this.handleChange(e)} />
-                            </div>
-                            <div className='lastName'>
-                                <label htmlFor='lastName'>Last Name</label>
-                                <input type='text' name='lastName' onChange={(e) => this.handleChange(e)} />
-                            </div>
-                            <div className='email'>
-                                <label htmlFor='email'>Email</label>
-                                <input type='text' name='email' onChange={(e) => this.handleChange(e)} />
-                            </div>
-                            <div className='password'>
-                                <label htmlFor='password'>Password</label>
-                                <input type='password' name='password' onChange={(e) => this.handleChange(e)} />
+                            <FormGroup>
+                                <Label style={{color: '#fff5ee'}} for='First Name'>First Name</Label>
+                                <br/>
+                                <Input  type='text' onChange={(e) => this.handleChange(e)} />
+
+                            </FormGroup>
+                            <br />
+                            <FormGroup>
+                                <Label style={{color: '#fff5ee'}} for='lastName'>Last Name</Label>
+                                <br/>
+                                <Input  type='text' name='lastName' onChange={(e) => this.handleChange(e)} />
+                            </FormGroup>
+                            <br />
+                            <FormGroup>
+                                <Label style={{color: '#fff5ee'}} for='email'>Email</Label>
+                                <br/>
+                                <Input  type='text' name='email' onChange={(e) => this.handleChange(e)} />
+                            </FormGroup>
+                            <br />
+                            <FormGroup>
+                                <Label style={{color: '#fff5ee'}} for='password'>Password</Label>
+                                <br/>
+                                <Input type='password' name='password' onChange={(e) => this.handleChange(e)} />
                                 {errors.password.length > 0 && <span style={{ color: 'red' }}>{errors.password}</span>}
-                            </div>
-
+                            </FormGroup>
+                            <br />
                             <div className='submit'>
-                                <button>Sign Up</button>
+                                <Button>Sign Up</Button>
                             </div>
-                        </form>
+                        </Form>
                     </div>
                 </div>
             </div>

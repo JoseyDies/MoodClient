@@ -57,7 +57,6 @@ class CreateGoal extends Component<GoalEntryCreateProps, GoalEntryCreateState> {
         return (
             <div className='goal-create-wrapper'>
                 <div className='goal-create-form-wrapper'>
-                    <h2>Goals</h2>
                     <form onSubmit={this.handleSubmit} >
                         <div className='twoGDiv'>
                             <label htmlFor='twoWeekG'>What is my two-week goal?</label>

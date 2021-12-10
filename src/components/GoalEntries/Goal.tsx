@@ -13,7 +13,7 @@ const Goal = (props: { token: string }) => {
         <div>
             <CreateGoal token={props.token}/>
             <GetGoal token={props.token}/>
-            <p>This is the goal page.</p>
+           
         </div>
     );
 

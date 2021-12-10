@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import APIURL from '../../helpers/environment';
+import { Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Label, Input } from 'reactstrap';
 
 export interface LoginProps {
     updateToken: Function,
@@ -55,50 +56,51 @@ class Login extends Component<LoginProps, LoginState> {
             (val) => val.length > 0 && (validity = false)
         );
         if (validity === true) {
-         
+
             fetch(`${APIURL}/user/login`, {
                 method: 'POST',
                 body: JSON.stringify({ email: this.state.email, password: this.state.password }),
                 headers: new Headers({
                     'Content-Type': 'application/json'
                 })
-                
+
             })
                 .then(response => response.json())
                 .then(data => {
-                    
+
                     if (data.sessionToken !== undefined) {
                         this.props.updateToken(data.sessionToken, data.user.role)
-                        
+
                     } else {
                         alert('Please try again.');
                     }
                 }).catch(err => console.log(err));
         } else {
-            alert('Please ensure your email and password meet the criteria') 
+            alert('Please ensure your email and password meet the criteria')
         }
     }
     render() {
-      
+
         return (
 
             <div className='wrapper'>
                 <div className='form-wrapper'>
-                    <h2>Log In</h2>
-                    <form onSubmit={this.handleSubmit} noValidate >
+                    <Form  onSubmit={this.handleSubmit} noValidate >
                         <div className='email'>
-                            <label htmlFor='email'>Email</label>
-                            <input type='text' name='email' onChange={this.handleChange} />
+                            <Label style={{color: '#fff5ee'}}for='email'>Email</Label>
+                            <br/>
+                            <Input  type='text' name='email' onChange={this.handleChange} />
                         </div>
+                        <br />
                         <div className='password'>
-                            <label htmlFor='password'>Password</label>
-                            <input type='password' name='password' onChange={this.handleChange} />
-                            
+                            <Label style={{color: '#fff5ee'}} for='password'>Password  </Label>
+                            <br/>
+                            <Input  type='password' name='password' onChange={this.handleChange} />
                         </div>
-                        <div className='submit'>
-                            <button>Log In</button>
-                        </div>
-                    </form>
+                        <br />
+                        <Button>Log In</Button>
+
+                    </Form>
                 </div>
             </div>
 
